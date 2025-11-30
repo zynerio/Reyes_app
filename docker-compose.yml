@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    image: local/reyes-app:latest
+    pull_policy: never
+    container_name: reyes-app
+    ports:
+      - "8085:85"
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /ZimaOS-HD/AppData/Reyes/storage:/var/www/html/app/storage
+      - /ZimaOS-HD/AppData/Reyes/cache:/var/www/html/app/bootstrap/cache
+      - /ZimaOS-HD/AppData/Reyes/database:/var/www/html/app/database
+x-casaos:
+  icon: https://raw.githubusercontent.com/zynerio/reyes/refs/heads/main/Server/kings_G.png
+  title:
+    custom: "Reyes"

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reyes</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root [data-theme="dark"] { color-scheme: dark; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 text-gray-900">
+    <div class="max-w-5xl mx-auto p-4">
+        <header class="flex items-center justify-between mb-6">
+            <h1 class="text-2xl font-bold">Reyes</h1>
+            <button id="toggleTheme" class="px-3 py-1 rounded bg-gray-200">Tema</button>
+        </header>
+        <div class="flex items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold">Tus listas</h2>
+        <form id="newList" class="flex gap-2">
+            <input class="border rounded px-2 py-1" name="title" placeholder="Nueva lista" required>
+            <button class="px-3 py-1 rounded bg-blue-600 text-white">Crear</button>
+        </form>
+    </div>
+    <ul class="space-y-2">
+                    <li class="text-gray-500">Aún no tienes listas</li>
+            </ul>
+    <script>
+        document.getElementById('newList').addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const title = e.target.title.value
+            const res = await api('/lists', { method: 'POST', body: JSON.stringify({ title }) })
+            location.reload()
+        })
+    </script>
+    </div>
+    <script>
+        document.getElementById('toggleTheme').addEventListener('click', () => {
+            const html = document.documentElement
+            html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
+        })
+        async function api(path, options = {}) {
+            const res = await fetch(`/Reyes/app/public/api${path}`, {
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+                ...options,
+            })
+            return res.json()
+        }
+    </script>
+</body>
+</html>
+
+
+
+
