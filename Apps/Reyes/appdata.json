@@ -1,0 +1,77 @@
+{
+  "name": "Reyes - Gift List Manager",
+  "appid": "reyes",
+  "title": "Reyes",
+  "icon": "https://raw.githubusercontent.com/zynerio/Reyes_app/main/Apps/Reyes/icon.png",
+  "category": "Productivity",
+  "description": "Sistema de gestión de listas de regalos para familias y eventos",
+  "developer": "Reyes Development",
+  "author": "Reyes",
+  "port": 80,
+  "screenshot_link": "",
+  "github_link": "",
+  "website_link": "",
+  "donation_link": "",
+  "submitter": "Reyes",
+  "language": "es",
+  "doc_link": "",
+  "support_link": "",
+  "permission": "advanced",
+  "tips": {
+    "before_install": [
+      "✅ Instalación automatizada - sin configuración manual",
+      "✅ Base de datos SQLite incluida - sin dependencias externas",
+      "✅ El primer usuario registrado será administrador automáticamente",
+      "🔧 Puerto web: 9050",
+      "💾 Los datos persisten en volúmenes de Docker"
+    ]
+  },
+  "host_path": "/DATA/AppData/ReyesApp",
+  "container_path": "/var/www/html",
+  "image": {
+    "type": "docker",
+    "image_name": "zynerio/reyesapp",
+    "image_tag": "latest"
+  },
+  "web_ui": {
+    "container_port": 80,
+    "type": "http",
+    "path": "/"
+  },
+  "envs": [
+    {
+      "name": "APP_ENV",
+      "description": "Environment",
+      "default": "production"
+    },
+    {
+      "name": "APP_DEBUG",
+      "description": "Debug Mode",
+      "default": "false"
+    },
+    {
+      "name": "APP_URL",
+      "description": "Application URL",
+      "default": "http://localhost"
+    }
+  ],
+  "ports": [
+    {
+      "container": 80,
+      "host": 9050,
+      "protocol": "tcp",
+      "description": "Web UI Port"
+    }
+  ],
+  "volumes": [
+    {
+      "container": "/var/www/html/storage",
+      "description": "Application Storage"
+    },
+    {
+      "container": "/var/www/html/database",
+      "description": "SQLite Database"
+    }
+  ],
+  "policy_uri": ""
+}

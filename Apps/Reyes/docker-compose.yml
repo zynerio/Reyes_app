@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  reyesapp:
+    image: zynerio/reyesapp:latest
+    container_name: reyesapp
+    ports:
+      - "9050:80"
+    volumes:
+      - /DATA/AppData/ReyesApp/storage:/var/www/html/storage
+      - /DATA/AppData/ReyesApp/database:/var/www/html/database
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+    restart: unless-stopped
+
+x-casaos:
+  author: zynerio
+  icon: "https://raw.githubusercontent.com/zynerio/Reyes_app/refs/heads/main/img/kings_G.png"
+  title:
+    custom: "Reyes"
+  description:
+    es_es: "Gestiona tus regalos con ReyesApp"
