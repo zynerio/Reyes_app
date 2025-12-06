@@ -16,6 +16,18 @@ Sistema de gestión de listas de regalos para familias y eventos.
 
 **Docker Hub:** [zynerio/reyesapp](https://hub.docker.com/r/zynerio/reyesapp)
 
+### Screenshots
+
+<div align="center">
+  <img src="Apps/Reyes/screenshots/dashboard.png" alt="Dashboard" width="45%">
+  <img src="Apps/Reyes/screenshots/list.png" alt="Lista de regalos" width="45%">
+</div>
+
+<div align="center">
+  <img src="Apps/Reyes/screenshots/profile.png" alt="Perfil" width="45%">
+  <img src="Apps/Reyes/screenshots/login.png" alt="Login" width="45%">
+</div>
+
 ---
 
 ## 🚀 Cómo usar esta tienda en ZimaOS/CasaOS
